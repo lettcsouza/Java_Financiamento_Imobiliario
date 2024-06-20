@@ -1,20 +1,17 @@
 package main;
 
 import modelo.Financiamento;
-import util.InterfaceUsuario;
 import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        InterfaceUsuario interfaceUsuario = new InterfaceUsuario();
-
         ArrayList<Financiamento> financiamentos = new ArrayList<>();
 
-        // Adicionando financiamentos
-        financiamentos.add(new Financiamento(interfaceUsuario.pedirValorImovel(), interfaceUsuario.pedirPrazoFinanciamento(), interfaceUsuario.pedirTaxaJuros()));
-        financiamentos.add(new Financiamento(interfaceUsuario.pedirValorImovel(), interfaceUsuario.pedirPrazoFinanciamento(), interfaceUsuario.pedirTaxaJuros()));
-        financiamentos.add(new Financiamento(interfaceUsuario.pedirValorImovel(), interfaceUsuario.pedirPrazoFinanciamento(), interfaceUsuario.pedirTaxaJuros()));
-        financiamentos.add(new Financiamento(interfaceUsuario.pedirValorImovel(), interfaceUsuario.pedirPrazoFinanciamento(), interfaceUsuario.pedirTaxaJuros()));
+        // Adicionando financiamentos de exemplo
+        financiamentos.add(new Financiamento(200000, 20, 5.0)); 
+        financiamentos.add(new Financiamento(300000, 25, 6.0)); 
+        financiamentos.add(new Financiamento(150000, 15, 4.5)); 
+        financiamentos.add(new Financiamento(250000, 30, 5.5)); 
 
         double totalValorImoveis = 0;
         double totalValorFinanciamentos = 0;
@@ -34,3 +31,4 @@ public class Main {
         System.out.printf("Total de todos os financiamentos: R$ %.2f%n", totalValorFinanciamentos);
     }
 }
+
