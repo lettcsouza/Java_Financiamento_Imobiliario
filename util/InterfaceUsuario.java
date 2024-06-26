@@ -44,4 +44,64 @@ public class InterfaceUsuario {
         } while (taxaJurosAnual <= 0);
         return taxaJurosAnual;
     }
+
+    public double pedirAreaConstruida() {
+        double areaConstruida = -1;
+        do {
+            System.out.print("Digite a área construída em m² (valor positivo): ");
+            areaConstruida = sc.nextDouble();
+            if (areaConstruida <= 0) {
+                System.out.println("Área construída inválida. Por favor, digite um valor positivo.");
+            }
+        } while (areaConstruida <= 0);
+        return areaConstruida;
+    }
+
+    public double pedirTamanhoTerreno() {
+        double tamanhoTerreno = -1;
+        do {
+            System.out.print("Digite o tamanho do terreno em m² (valor positivo): ");
+            tamanhoTerreno = sc.nextDouble();
+            if (tamanhoTerreno <= 0) {
+                System.out.println("Tamanho do terreno inválido. Por favor, digite um valor positivo.");
+            }
+        } while (tamanhoTerreno <= 0);
+        return tamanhoTerreno;
+    }
+
+    public int pedirNumVagasGaragem() {
+        int numVagasGaragem = -1;
+        do {
+            System.out.print("Digite o número de vagas na garagem (valor positivo): ");
+            numVagasGaragem = sc.nextInt();
+            if (numVagasGaragem <= 0) {
+                System.out.println("Número de vagas inválido. Por favor, digite um valor positivo.");
+            }
+        } while (numVagasGaragem <= 0);
+        return numVagasGaragem;
+    }
+
+    public int pedirNumAndar() {
+        int numAndar = -1;
+        do {
+            System.out.print("Digite o número do andar (valor positivo): ");
+            numAndar = sc.nextInt();
+            if (numAndar <= 0) {
+                System.out.println("Número do andar inválido. Por favor, digite um valor positivo.");
+            }
+        } while (numAndar <= 0);
+        return numAndar;
+    }
+
+    public String pedirTipoZona() {
+        String tipoZona = "";
+        do {
+            System.out.print("Digite o tipo de zona (residencial ou comercial): ");
+            tipoZona = sc.next();
+            if (!tipoZona.equalsIgnoreCase("residencial") && !tipoZona.equalsIgnoreCase("comercial")) {
+                System.out.println("Tipo de zona inválido. Por favor, digite 'residencial' ou 'comercial'.");
+            }
+        } while (!tipoZona.equalsIgnoreCase("residencial") && !tipoZona.equalsIgnoreCase("comercial"));
+        return tipoZona;
+    }
 }
