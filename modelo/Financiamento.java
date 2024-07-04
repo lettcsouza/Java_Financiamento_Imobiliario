@@ -2,7 +2,7 @@ package modelo;
 
 public abstract class Financiamento {
     private double valorImovel;
-    private int prazoFinanciamento; // em anos
+    private int prazoFinanciamento;
     private double taxaJurosAnual;
 
     public Financiamento(double valorImovel, int prazoFinanciamento, double taxaJurosAnual) {
@@ -24,10 +24,15 @@ public abstract class Financiamento {
     }
 
     public abstract double calcularPagamentoMensal();
-    
+
     public double calcularTotalPagamento() {
         return calcularPagamentoMensal() * prazoFinanciamento * 12;
     }
 
-    public abstract void mostrarDadosFinanciamento();
+    public void mostrarDados() {
+        System.out.println("Valor do Imóvel: R$ " + valorImovel);
+        System.out.println("Prazo do Financiamento: " + prazoFinanciamento + " anos");
+        System.out.println("Taxa de Juros Anual: " + taxaJurosAnual + "%");
+        System.out.println("Valor Total do Financiamento: R$ " + calcularTotalPagamento());
+    }
 }

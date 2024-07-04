@@ -1,7 +1,6 @@
 package modelo;
 
 public class Casa extends Financiamento {
-    private static final double VALOR_SEGURO = 80.0;
     private double areaConstruida;
     private double tamanhoTerreno;
 
@@ -11,20 +10,26 @@ public class Casa extends Financiamento {
         this.tamanhoTerreno = tamanhoTerreno;
     }
 
-    @Override
-    public double calcularPagamentoMensal() {
-        double pagamentoMensal = (super.getValorImovel() / (super.getPrazoFinanciamento() * 12)) * (1 + (super.getTaxaJurosAnual() / 12 / 100));
-        return pagamentoMensal + VALOR_SEGURO;
+    public double getAreaConstruida() {
+        return areaConstruida;
+    }
+
+    public double getTamanhoTerreno() {
+        return tamanhoTerreno;
     }
 
     @Override
-    public void mostrarDadosFinanciamento() {
+    public double calcularPagamentoMensal() {
+        double pagamentoMensal = (getValorImovel() / (getPrazoFinanciamento() * 12)) * (1 + (getTaxaJurosAnual() / 12));
+        return pagamentoMensal + 80; // Valor do seguro obrigatório
+    }
+
+    public void aplicarDesconto(double desconto) throws DescontoMaiorQueJurosException {
         double pagamentoMensal = calcularPagamentoMensal();
-        double totalPagamento = calcularTotalPagamento();
-        System.out.printf("Valor do imóvel (Casa): R$ %.2f%n", getValorImovel());
-        System.out.printf("Valor do financiamento: R$ %.2f%n", totalPagamento);
-        System.out.printf("Pagamento mensal (incluindo seguro): R$ %.2f%n", pagamentoMensal);
-        System.out.printf("Área construída: %.2f m²%n", areaConstruida);
-        System.out.printf("Tamanho do terreno: %.2f m²%n", tamanhoTerreno);
+        double jurosMensal = pagamentoMensal - (getValorImovel() / (getPrazoFinanciamento() * 12));
+        if (desconto > jurosMensal) {
+            throw new DescontoMaiorQueJurosException("O desconto não pode ser maior que o valor dos juros mensais.");
+        }
+        // Aplicar o desconto na lógica de cálculo conforme necessário
     }
 }
