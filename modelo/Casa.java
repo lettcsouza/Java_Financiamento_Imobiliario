@@ -1,6 +1,13 @@
 package modelo;
 
+
 public class Casa extends Financiamento {
+    @Override
+    public String toString(){
+        return "Casa," + getValorImovel() + ", " + getPrazoFinanciamento() + ", " + getTaxaJurosAnual() + ", " + areaConstruida + ", " + tamanhoTerreno;
+    }
+
+    private static final long serialVersionUID = 1L;
     private double areaConstruida;
     private double tamanhoTerreno;
 
